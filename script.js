@@ -111,6 +111,13 @@ function calcular() {
     }
 }
 
+// Función para activar o desactivar boton Registrar
+function desactivarBoton(){
+    botonEnviar.disabled = true;
+    document.getElementById("ResumenCompra").innerHTML = "COMPRA EXITOSA";
+}   
+
+
 // Función para limpiar mensajes de error
 function limpiar(){
     document.getElementById("nombreInput").innerHTML = "";
@@ -127,8 +134,6 @@ botonEnviar.addEventListener("click", calcular);
 
 formularioComprar.addEventListener('submit', (e) => {
     e.preventDefault();
-    botonEnviar.ariaDisabled;
-    document.getElementById("ResumenCompra").innerHTML = "COMPRA EXITOSA";
 })
 
 botonBorrar.addEventListener("click", limpiar);

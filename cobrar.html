@@ -123,23 +123,23 @@
                     <!--" novalidate     pattern="[a-zA-ZÁ-ÿ]+"-->
                     <div class="col-md-6 mb-3">
                         <input type="text" class="form-control is-valid" id="nombreInput" name="nombreInput"
-                            placeholder="Nombre: " required>
+                            placeholder="Nombre: " required onChange="validar()">
                         <p class="mb-0 p-1" id="errorNombre"></p>
                     </div>
                     <div class="col-md-6 mb-3">
                         <input type="text" class="form-control is-valid" id="apellidoInput" name="apellidoInput"
-                            placeholder="Apellido: " required>
+                            placeholder="Apellido: " required onChange="validar()">
                         <p class="mb-0 p-1" id="errorApellido"></p>
                     </div>
                     <div class="col-mb-3 mb-3">
                         <input type="email" class="form-control is-valid" id="emailInput" name="emailInput"
-                            placeholder="Correo" required>
+                            placeholder="Correo" required onChange="validar()">
                         <p class="mb-0 p-1" id="errorEmail"></p>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="mx-1 my-2" class="form-label">Cantidad</label>
                         <input type="number" class="form-control is-valid" id="cantidadInput" name="cantidadInput"
-                            min="1" max="99" placeholder="Cantidad" required>
+                            min="1" max="99" placeholder="Cantidad" required onChange="validar()">
                         <p class="pt-1 px-1" id="errorCantidad"></p>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -152,23 +152,27 @@
                         </select>
                     </div>
                     <div class="col">
-                        <p id="totalCompra" class="fs-5 mb-3 p-2 alert-primary" style="background-color: #cce5ff">
+                        <p id="totalCompra" class="fs-5 mb-3 p-2 alert-primary" style="background-color: #cce5ff" >
                             Total a Pagar: $
                         </p>
                         <!--Botones -->
                         <div class="row">
+                            <div class="col-md-12 mb-3 d-grid">
+                                <p class="fs-5 mb-0 p-0 justify-content-center d-flex"
+                                    style="background-color: #96c93e;" id="ResumenCompra" ></p>
+                            </div>
                             <div class="col-md-6 mb-3 d-grid">
                                 <button type="reset" class="btn text-dark fs-5 pb-3" id="borrar" value="borrar"
                                     style="background-color: #96c93e;">Borrar</button>
                             </div>
                             <div class="col-md-6 mb-3 d-grid">
-                                <button id="enviar" type="submit" value="Enviar" name="enviar"
+                                <button id="enviar" type="submit" value="Enviar" name="enviar" onclick="desactivarBoton()"
                                     class="btn text-dark fs-5 pb-3" style="background-color: #96c93e;">Resumen
                                 </button>
                             </div>
                             <div>
                                 <p class="fs-5 mb-0 p-0 justify-content-center d-flex"
-                                    style="background-color: #96c93e;" id="ResumenCompra"></p>
+                                    style="background-color: #96c93e;" id="ResumenCompra" ></p>
                             </div>
                         </div>
                     </div>
