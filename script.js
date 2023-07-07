@@ -31,7 +31,7 @@ const botonBorrar = document.getElementById("borrar");
         form.addEventListener('submit', function (event) {
           if (!form.checkValidity()) {
             event.preventDefault();
-            event.stopPropagation();
+           // event.stopPropagation();
           }
         form.classList.add('was-validated')
         }, false)
@@ -56,7 +56,7 @@ function validar() {
         }
     else{
         document.getElementById("errorNombre").innerHTML = "";
-        } 
+        };
     if (!(/^[a-zA-ZÁ-ÿ\s]{3,25}$/.test(apellido.value))) {
         // Si no se cumple la condicion...
         document.getElementById("errorApellido").innerHTML = "Debe tener de 3 a 25 caracteres, sin números ni símbolos";
@@ -64,18 +64,18 @@ function validar() {
         }
     else{
         document.getElementById("errorApellido").innerHTML = "";
-        }  
-    if ((/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)+$/.test(email.value))) { 
-        // Si no se cumple la condicion...    /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/   /^[a-z A-Z 0-9.-_+]+@[a-z A-Z 0-9-]+\.[a-z A-Z 0-9-.]+$/
+        };  
+    if (!(/^[a-zA-Z0-9.-_+]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(email.value))) { 
+        // Si no se cumple la condicion...    /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)+$/   
         document.getElementById("errorEmail").innerHTML = "El email no coincide con el formato prueba@ejemplo.com";
         return false;
         }
     else{
         document.getElementById("errorEmail").innerHTML = "";
-        } 
-    if (cantTicket == 0) { 
+        };
+    if (cantTicket < 1 || cantTicket > 30) { 
         // Si no se cumple la condicion...
-        document.getElementById("errorCantidad").innerHTML = "La cantidad debe ser mayor a cero";
+        document.getElementById("errorCantidad").innerHTML = "La cantidad debe ser mayor a cero y menor a 30";
         return false;
         }
     else {
@@ -111,10 +111,12 @@ function calcular() {
     }
 }
 
-// Función para activar o desactivar boton Registrar
+// Función para desactivar boton Registrar
 function desactivarBoton(){
-    botonEnviar.disabled = true;
-    document.getElementById("ResumenCompra").innerHTML = "COMPRA EXITOSA";
+    if (validar()){
+        botonEnviar.disabled = true;
+        document.getElementById("ResumenCompra").innerHTML = "REGISTRO DE COMPRA EXITOSO";
+    }
 }   
 
 
@@ -126,14 +128,10 @@ function limpiar(){
     document.getElementById("cantidadInput").innerHTML = "";
     document.getElementById("totalCompra").innerHTML = "Total a Pagar: $";
     document.getElementById("ResumenCompra").innerHTML = "";
+    botonEnviar.disabled = false;
 }
 
-botonEnviar.addEventListener("click", mostar);
 botonEnviar.addEventListener("click", validar);
 botonEnviar.addEventListener("click", calcular);
-
-formularioComprar.addEventListener('submit', (e) => {
-    e.preventDefault();
-})
 
 botonBorrar.addEventListener("click", limpiar);
